@@ -67,9 +67,7 @@ namespace TestPac.Data
                         Console.Clear();
                         Console.Write("Oh no Ghost ! Game over !");
                         GameOver = true;
-                    }
-
-                    
+                    }                    
 
                     if (Zemelapis.ZaidimoLenta[GhostX, GhostY] == GameObjects.ValgomasVaiduoklis)
                     {
@@ -105,9 +103,8 @@ namespace TestPac.Data
                 }
 
                 Laikas.SetTime();
-
-                Zemelapis.ZaidimoLenta[GhostX, GhostY] = GameObjects.ValgomasVaiduoklis;
                 GameObjects.LaikinasVaiduoklis = GameObjects.Vaiduoklis;
+                Zemelapis.ZaidimoLenta[GhostX, GhostY] = GameObjects.ValgomasVaiduoklis;
                 GameObjects.Vaiduoklis = GameObjects.ValgomasVaiduoklis;
             }
             else
@@ -115,7 +112,7 @@ namespace TestPac.Data
                 if (Laikas != null)
                 {
                     if (Laikas.LaikasBaigesi)
-                    {
+                    {    
                         GameObjects.Vaiduoklis = GameObjects.LaikinasVaiduoklis;
                     }
 

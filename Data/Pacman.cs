@@ -1,26 +1,30 @@
 ﻿using System;
+using TestPac.View;
 
 namespace TestPac.Data
 {
     class Pacman 
     {
-        public int score = 0;
+        private int _kryptisX = 0;
+        private int _kryptisY = 0;
+
         public int PacmanX { get; set; }
         public int PacmanY { get; set; }
 
         private Map Zemelapis { get; set; }
-        private int _kryptisX = 0;
-        private int _kryptisY = 0;
+        private CalculateScore CalculateSc { get; set; }
+        
 
         public bool GameOver { get; set; }
         public bool ValgomasVaiduoklis { get; set; }
         public bool PacmanSuvalge { get; set; }
 
-        public Pacman (int x, int y, Map zemelapis)
+        public Pacman (int x, int y, Map zemelapis, CalculateScore calculateSc)
         {
             PacmanX = x;
             PacmanY = y;
             Zemelapis = zemelapis;
+            CalculateSc = calculateSc;
         }
 
         public void PacmanKordinates()
@@ -56,23 +60,22 @@ namespace TestPac.Data
 
             if (Zemelapis.ZaidimoLenta[newX, newY] != GameObjects.Siena)
             {
-                if (Zemelapis.ZaidimoLenta[newX, newY] != GameObjects.Vaiduoklis)     
+                CalculateSc.CalcScore(newX, newY);
+                if (Zemelapis.ZaidimoLenta[newX, newY] == 'W')
                 {
-                    EatGhost(newX, newY);
-                    CalcScore(newX, newY);
+                    PacmanSuvalge = true;
                     Zemelapis.ZaidimoLenta[PacmanX, PacmanY] = ' ';
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+
                     Zemelapis.ZaidimoLenta[newX, newY] = GameObjects.Pacman;
 
                     PacmanX = newX;
                     PacmanY = newY;
                 }
-                else if(Zemelapis.ZaidimoLenta[newX, newY] == 'W')
+                else if (Zemelapis.ZaidimoLenta[newX, newY] != GameObjects.Vaiduoklis)     
                 {
-                    CalcScore(newX, newY);
-                    PacmanSuvalge = true;
+                    EatGhost(newX, newY);
                     Zemelapis.ZaidimoLenta[PacmanX, PacmanY] = ' ';
-
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Zemelapis.ZaidimoLenta[newX, newY] = GameObjects.Pacman;
 
                     PacmanX = newX;
@@ -84,26 +87,9 @@ namespace TestPac.Data
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.Write("Oh no Ghost ! Game over !");
                     Console.SetCursorPosition(22, 4);
-                    Console.WriteLine(score);
+                    Console.WriteLine(CalculateSc.Score);
                     GameOver = true;
                 }
-            }
-        }
-
-        public void CalcScore(int x, int y)
-        {
-            if (Zemelapis.ZaidimoLenta[x, y] == GameObjects.Zirniukas)
-            {
-                score += 10;
-                Console.SetCursorPosition(22, 4);
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine(score);
-            }
-            else if (Zemelapis.ZaidimoLenta[x, y] == GameObjects.ValgomasVaiduoklis)
-            {
-                score += 50;
-                Console.SetCursorPosition(22, 4);
-                Console.WriteLine(score);
             }
         }
 

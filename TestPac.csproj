@@ -51,6 +51,7 @@
     <Compile Include="Logic\TimeControll.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\CalculateScore.cs" />
     <Compile Include="View\Draw.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -17,7 +17,7 @@ namespace TestPac.View
             _eilutes = zemelapis.Eilutes;
             _stulpeliai = zemelapis.Stulpeliai;
         }
-        public void Piesti()
+        public void Print()
         {
             //Console.ForegroundColor = ConsoleColor.Green;
             Console.CursorTop = 2;
