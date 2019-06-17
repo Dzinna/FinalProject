@@ -1,0 +1,6 @@
+C:\Users\Gina\source\repos\TestPac\bin\Debug\TestPac.exe.config
+C:\Users\Gina\source\repos\TestPac\bin\Debug\TestPac.exe
+C:\Users\Gina\source\repos\TestPac\bin\Debug\TestPac.pdb
+C:\Users\Gina\source\repos\TestPac\obj\Debug\TestPac.csproj.CoreCompileInputs.cache
+C:\Users\Gina\source\repos\TestPac\obj\Debug\TestPac.exe
+C:\Users\Gina\source\repos\TestPac\obj\Debug\TestPac.pdb
